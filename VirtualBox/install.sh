@@ -11,12 +11,13 @@ if [ $(id -u) -eq 0 ]; then
 
     id $username > /dev/null 2>&1
     if [[ $? -eq 0 ]]; then
-        echo -e "\e[1;31mWaring: user exist.\e[0"
+        echo -e "\e[1;31mWaring: user exist.\e[0m"
         exit 1
     fi
     
     read -s -p "Enter password for new user: " password
     pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+    echo
 else
     echo -e "\e[31mWaring: Only root can run this script.\e[0m"
     exit 1
@@ -86,6 +87,7 @@ echo
 useradd -m -p $pass -G $vboxusersGoup $username
 [ $? -eq 0 ] && echo -e "\e[1;32m$username has been added to $vboxusersGoup!\e[0m" && exit 1 || echo -e "\e[1;31mFailed to add a user!\e[0m"
 
+touch /etc/default/virtualbox
 echo "VBOXWEB_USER=$username" > /etc/default/virtualbox
 [ $? -ne 0 ] && echo -e "\e[1;32mCreate /etc/default/virtualbox fail.\e[0m" && exit 1 || echo -e "\e[1;32mCreate /etc/default/virtualbox success.\e[0m"
 
