@@ -77,6 +77,9 @@ fi
 unzip phpvirtualbox-5.0-5.zip > /dev/null
 mv phpvirtualbox-5.0-5 /var/www/html/virtualbox
 rm -f phpvirtualbox-5.0-5.zip
+mv /var/www/html/virtualbox/config.php-example /var/www/html/virtualbox/config.php
+sed -i "s/'vbox'/'$username'/" /var/www/html/virtualbox/config.php
+sed -i "s/'pass'/'$pass'/" /var/www/html/virtualbox/config.php
 
 echo
 echo "#######################################################################"
