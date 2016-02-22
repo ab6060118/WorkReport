@@ -38,7 +38,7 @@ echo "#######################################################################"
 echo
 
 apt-get update -y
-apt-get install virtualbox-5.0 zip -y
+apt-get install virtualbox-5.0 zip virtualbox-guest-additions-iso -y
 
 echo
 echo "#######################################################################"
