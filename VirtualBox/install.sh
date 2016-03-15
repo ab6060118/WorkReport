@@ -80,6 +80,8 @@ rm -f phpvirtualbox-5.0-5.zip
 mv /var/www/html/virtualbox/config.php-example /var/www/html/virtualbox/config.php
 sed -i "s/'vbox'/'$username'/" /var/www/html/virtualbox/config.php
 sed -i "s/'pass'/'$password'/" /var/www/html/virtualbox/config.php
+sed -i "s/www-data/$username/g" /var/www/html/virtualbox/config.php
+service apache2 restart
 
 echo
 echo "#######################################################################"
