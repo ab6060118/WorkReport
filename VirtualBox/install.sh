@@ -81,6 +81,8 @@ mv /var/www/html/virtualbox/config.php-example /var/www/html/virtualbox/config.p
 sed -i "s/'vbox'/'$username'/" /var/www/html/virtualbox/config.php
 sed -i "s/'pass'/'$password'/" /var/www/html/virtualbox/config.php
 sed -i 's/#var $enforceVMOwnership = true;/var $enforceVMOwnership = true;/' /var/www/html/virtualbox/config.php
+sed -i "s/www-data/$username/g" /etc/apache2/envvars
+service apache2 restart
 
 echo
 echo "#######################################################################"
