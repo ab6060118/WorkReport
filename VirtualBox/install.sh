@@ -80,6 +80,7 @@ rm -f phpvirtualbox-5.0-5.zip
 mv /var/www/html/virtualbox/config.php-example /var/www/html/virtualbox/config.php
 sed -i "s/'vbox'/'$username'/" /var/www/html/virtualbox/config.php
 sed -i "s/'pass'/'$password'/" /var/www/html/virtualbox/config.php
+sed -i 's/#var $enforceVMOwnership = true;/var $enforceVMOwnership = true;/' /var/www/html/virtualbox/config.php
 
 echo
 echo "#######################################################################"
